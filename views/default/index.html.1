@@ -1,0 +1,30 @@
+<html>
+    <link rel="stylesheet" type="text/css" href="{{=URL('static','css/style.css')}}"/>
+    <script type="text/javascript" src="{{=URL('static','js/jquery.js')}}"></script>
+    <head>
+        <title>Wedding Slider</title>
+    </head>
+    <body>
+        <script  type="text/javascript">
+            $(document).ready(function(){
+                //adiciona imagem a div
+                var url = "{{=URL('static','images/bouquet.jpg')}}";
+                $('#slider').append("<img id='photo' src="+url+"\>");
+                //faz o botao aparecer e sumir
+                $('#slider').click(function({
+                    if($('#button-container').is(":visible")){
+                        $('#button-container').hide();
+                    }
+                    else{
+                        $('#button-container').show();
+                    }
+                }))
+            })
+        </script>
+        <div id="slider">
+            <div id="button-container">
+                <input type="file" accept="image/*" capture="camera" />
+            </div>
+        </div>
+    </body>
+</html>

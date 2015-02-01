@@ -7,10 +7,27 @@
     <body>
         <script  type="text/javascript">
             $(document).ready(function(){
+                //adiciona imagem a div
                 var url = "{{=URL('static','images/bouquet.jpg')}}";
                 $('#slider').append("<img id='photo' src="+url+"\>");
             })
         </script>
-        <div id="slider"></div>
+        <script>
+            //funcao que aparece e desaparece o botão de envio de imagens
+            function changeButton(){
+                if($('#buttonSubmit').is(":visible")){
+                    $('#buttonSubmit').hide();
+                }
+                else{
+                    $('#buttonSubmit').show();
+                }
+            }
+        </script>
+        <div id="slider" onclick="changeButton()">
+            <form id="buttonSubmit" action="server.cgi" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" capture>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
     </body>
 </html>
